@@ -1,29 +1,47 @@
 <div class="datepickers-container">
   <div class="datepicker">
-    <div class="input-group">
-      <input class="form-control"
-             placeholder="Fecha inicial"
-             name="dpInicial"
-             [(ngModel)]="modelInicial"
-             ngbDatepicker
-             #dInicial="ngbDatepicker" />
-      <button class="btn btn-outline-secondary" (click)="dInicial.toggle()" type="button">
-        <i class="bi bi-calendar3"></i>
-      </button>
+    <div class="form-group">
+      <label for="dpInicial">Fecha inicial:</label>
+      <div class="input-group">
+        <input class="form-control"
+          id="dpInicial"
+          placeholder="yyyy-mm-dd"
+          name="dpInicial"
+          [(ngModel)]="modelInicial"
+          ngbDatepicker
+          #dInicial="ngbDatepicker"
+          (dateSelect)="onDateSelect($event, 'dpInicial')"
+          (input)="onInputChange($event, 'dpInicial')" />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="dInicial.toggle()" type="button">
+            <i class="bi bi-calendar3"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="datepicker">
-    <div class="input-group">
-      <input class="form-control"
-             placeholder="Fecha final"
-             name="dpFinal"
-             [(ngModel)]="modelFinal"
-             ngbDatepicker
-             #dFinal="ngbDatepicker" />
-      <button class="btn btn-outline-secondary" (click)="dFinal.toggle()" type="button">
-        <i class="bi bi-calendar3"></i>
-      </button>
+    <div class="form-group">
+      <label for="dpFinal">Fecha final:</label>
+      <div class="input-group">
+        <input class="form-control"
+          id="dpFinal"
+          placeholder="yyyy-mm-dd"
+          name="dpFinal"
+          [(ngModel)]="modelFinal"
+          ngbDatepicker
+          #dFinal="ngbDatepicker"
+          (dateSelect)="onDateSelect($event, 'dpFinal')"
+          (input)="onInputChange($event, 'dpFinal')" />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="dFinal.toggle()" type="button">
+            <i class="bi bi-calendar3"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<app-show-report [fechaInicial]="fechaInicial" [fechaFinal]="fechaFinal"></app-show-report>
