@@ -1,5 +1,5 @@
 export const environment = {
-    apiUrlByTranches: 'localhost:3000/historicalConsumptions/byTranches',
-    apiUrlByClient: 'localhost:3000/historicalConsumptions/byClient',
-    apiUrlTop20: 'localhost:3000/historicalConsumptions/top20WorstSegmentsByClient',
+    apiUrlByTranches: 'http://localhost:3000/historicalConsumptions/byTranches',
+    apiUrlByClient: 'http://localhost:3000/historicalConsumptions/byClient',
+    apiUrlTop20: 'http://localhost:3000/historicalConsumptions/top20WorstSegmentsByClient',
   };
