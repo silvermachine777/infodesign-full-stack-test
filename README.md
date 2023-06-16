@@ -1,4 +1,4 @@
-# NewshoreAir
+# Infodesign FullStack Test
 
 Welcome to FullStack test by Infodesign. This is a web aplication for  consumption history visualization for tranches, clients and top 20 Worst Segments By Client.
 
