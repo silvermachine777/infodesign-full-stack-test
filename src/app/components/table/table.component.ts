@@ -1,44 +1,24 @@
-import { Component } from '@angular/core';
-
-interface Country {
-  name: string;
-  flag: string;
-  area: number;
-  population: number;
-}
-
-const COUNTRIES: Country[] = [
-  {
-    name: 'Russia',
-    flag: 'f/f3/Flag_of_Russia.svg',
-    area: 17075200,
-    population: 146989754,
-  },
-  {
-    name: 'Canada',
-    flag: 'c/cf/Flag_of_Canada.svg',
-    area: 9976140,
-    population: 36624199,
-  },
-  {
-    name: 'United States',
-    flag: 'a/a4/Flag_of_the_United_States.svg',
-    area: 9629091,
-    population: 324459463,
-  },
-  {
-    name: 'China',
-    flag: 'f/fa/Flag_of_the_People%27s_Republic_of_China.svg',
-    area: 9596960,
-    population: 1409517397,
-  },
-];
+import { Component, Input } from '@angular/core';
+import { Client } from 'src/app/models/client.model';
+import { Top20 } from 'src/app/models/top20.model';
+import { Tranches } from 'src/app/models/tranches.model';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
 })
 export class TableComponent {
-  countries: Country[] = COUNTRIES;
+  @Input() data!: (Tranches | Client | Top20)[];
+
+  getColumns(): string[] {
+    if (this.data.length > 0) {
+      return Object.keys(this.data[0]);
+    }
+    return [];
+  }
+
+  getPropertyValue(item: Tranches | Client | Top20, column: string): any {
+    return (item as any)[column];
+  }
 }
