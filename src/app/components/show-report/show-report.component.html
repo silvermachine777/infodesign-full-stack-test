@@ -1,56 +1,50 @@
 <section id="report">
-    <h1>Historicos</h1>
-    <p>Selecciona el historico que desea consultar:</p>
-    <button
-        type="button"
-        class="btn btn-outline-primary"
-        (click)="toggleCollapse(1)"
-        [attr.aria-expanded]="!isCollapsed[1]"
-        aria-controls="collapseExample1"
-    >
-        Histórico Consumos por Tramos
-    </button>
-    <button
-        type="button"
-        class="btn btn-outline-primary ms-2"
-        (click)="toggleCollapse(2)"
-        [attr.aria-expanded]="!isCollapsed[2]"
-        aria-controls="collapseExample2"
-    >
-        Histórico Consumos por Cliente
-    </button>
-    <button
-        type="button"
-        class="btn btn-outline-primary ms-2"
-        (click)="toggleCollapse(3)"
-        [attr.aria-expanded]="!isCollapsed[3]"
-        aria-controls="collapseExample3"
-    >
-        Top 20 Peores Tramos/Cliente
-    </button>
+    <h1>Historicos de consumos</h1>
+    <p>Pulsa sobre el informe que quieres ver. Recuerda, los botones solo se habilitan si seleccionas la fecha inicial y final.</p>
 
-
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="toggleCollapse(1); getHistoricConsumptionByTranches()"
+      [attr.aria-expanded]="!isCollapsed[1]"
+      aria-controls="collapseExample1"
+      [disabled]="!fechaInicial || !fechaFinal"
+    >
+      Histórico Consumos por Tramos
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary ms-2"
+      (click)="toggleCollapse(2); getHistoricConsumptionByClient()"
+      [attr.aria-expanded]="!isCollapsed[2]"
+      aria-controls="collapseExample2"
+      [disabled]="!fechaInicial || !fechaFinal"
+    >
+      Histórico Consumos por Cliente
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary ms-2"
+      (click)="toggleCollapse(3); getTop20()"
+      [attr.aria-expanded]="!isCollapsed[3]"
+      aria-controls="collapseExample3"
+      [disabled]="!fechaInicial || !fechaFinal"
+    >
+      Top 20 Peores Tramos/Cliente
+    </button>
+  
+  
     <div [ngbCollapse]="isCollapsed[1]">
-        <div class="card">
-            <div class="card-body">
-                <app-table></app-table>
-            </div>
-        </div>
+      <app-table [data]="tranchesData"></app-table>
     </div>
-
+  
     <div [ngbCollapse]="isCollapsed[2]">
-        <div class="card">
-            <div class="card-body">
-                <app-table></app-table>
-            </div>
-        </div>
+      <app-table [data]="clientData"></app-table>
     </div>
-
+  
     <div [ngbCollapse]="isCollapsed[3]">
-        <div class="card">
-            <div class="card-body">
-                <app-table></app-table>
-            </div>
-        </div>
+      <app-table [data]="top20Data"></app-table>
     </div>
-</section>
+  </section>
+
+  
