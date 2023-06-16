@@ -1,27 +1,40 @@
-# InfodesignFullStackTest
+# NewshoreAir
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.8.
+Welcome to FullStack test by Infodesign. This is a web aplication for  consumption history visualization for tranches, clients and top 20 Worst Segments By Client.
 
-## Development server
+# Preview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![preview of application](https://raw.githubusercontent.com/silvermachine777/infodesign-full-stack-test/main/src/assets/img/InfodesignFullStackTest.png)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Datepicker component
+- Show repor component
+- Table component
+- Client, top20 and tranches services for the http requests
+- Models
+- Environments
 
-## Build
+## Main technologies
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Angular CLI](https://github.com/angular/angular-cli) version 15.2.8.
+- Node version v18.14.2
+- Conventional commits https://www.conventionalcommits.org/en/v1.0.0/
+- CSS3
+- HTML5
 
-## Running unit tests
+## Other technologies / Libraries
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Bootstrap
 
-## Running end-to-end tests
+## Project and development server
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Download of the repository
+- If necessary, validate your nodejs version and use nvm to install the right version https://github.com/nvm-sh/nvm
+- Execute npm install
+- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
