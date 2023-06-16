@@ -1,0 +1,29 @@
+<div class="datepickers-container">
+  <div class="datepicker">
+    <div class="input-group">
+      <input class="form-control"
+             placeholder="Fecha inicial"
+             name="dpInicial"
+             [(ngModel)]="modelInicial"
+             ngbDatepicker
+             #dInicial="ngbDatepicker" />
+      <button class="btn btn-outline-secondary" (click)="dInicial.toggle()" type="button">
+        <i class="bi bi-calendar3"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="datepicker">
+    <div class="input-group">
+      <input class="form-control"
+             placeholder="Fecha final"
+             name="dpFinal"
+             [(ngModel)]="modelFinal"
+             ngbDatepicker
+             #dFinal="ngbDatepicker" />
+      <button class="btn btn-outline-secondary" (click)="dFinal.toggle()" type="button">
+        <i class="bi bi-calendar3"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.datepickers-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .datepicker {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  @media (max-width: 576px) {
+    .datepickers-container {
+      flex-direction: column;
+    }
+  
+    .datepicker {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  
