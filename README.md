@@ -25,7 +25,8 @@ Welcome to FullStack test by Infodesign. This is a web aplication for  consumpti
 
 ## Other technologies / Libraries
 
-- Bootstrap
+- [Bootstrap](https://ng-bootstrap.github.io/#/home)
+- Bootstrap icons
 
 ## Project and development server
 
