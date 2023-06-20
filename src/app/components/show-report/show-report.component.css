@@ -18,3 +18,7 @@
   #report h1{
     padding-bottom: 1rem;
   }
+
+  .error-message {
+    margin-top: 10px;
+  }

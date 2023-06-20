@@ -24,13 +24,7 @@ export class ShowReportComponent {
   clientData: Client[] = [];
   top20Data: Top20[] = [];
 
-  datesSelected = true;
-
-  public isCollapsed: Record<number, boolean> = {
-    1: true,
-    2: true,
-    3: true,
-  };
+  showErrorMessage  = false;
 
   constructor(
     private tranchesService: TranchesService,
@@ -38,13 +32,12 @@ export class ShowReportComponent {
     private top20Service: Top20Service
   ) {}
 
-  toggleCollapse(id: number) {
-    this.isCollapsed[id] = !this.isCollapsed[id];
-  }
-
   getHistoricConsumptionByTranches() {
     if (!this.fechaInicial || !this.fechaFinal) {
-      this.datesSelected = false;
+      this.showErrorMessage  = true;
+      setTimeout(() => {
+        this.showErrorMessage = false;
+      }, 3000);
       return;
     }
 
@@ -71,12 +64,15 @@ export class ShowReportComponent {
         this.data = this.tranchesData;
       }
     );
-    this.datesSelected = true;
+    this.showErrorMessage  = true;
   }
 
   getHistoricConsumptionByClient() {
     if (!this.fechaInicial || !this.fechaFinal) {
-      this.datesSelected = false;
+      this.showErrorMessage  = true;
+      setTimeout(() => {
+        this.showErrorMessage = false;
+      }, 3000);
       return;
     }
 
@@ -104,12 +100,15 @@ export class ShowReportComponent {
       }
     );
 
-    this.datesSelected = true;
+    this.showErrorMessage  = true;
   }
 
   getTop20() {
     if (!this.fechaInicial || !this.fechaFinal) {
-      this.datesSelected = false;
+      this.showErrorMessage  = true;
+      setTimeout(() => {
+        this.showErrorMessage = false;
+      }, 3000);
       return;
     }
     
@@ -136,7 +135,7 @@ export class ShowReportComponent {
         this.data = this.top20Data;
       }
     );
-    this.datesSelected = true;
+    this.showErrorMessage  = true;
   }
 
   private formatDate(date: NgbDateStruct): string {

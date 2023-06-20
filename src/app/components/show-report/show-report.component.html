@@ -1,50 +1,32 @@
+<ngb-alert *ngIf="showErrorMessage && (!fechaInicial || !fechaFinal)"type="danger" class="error-message">
+  Por favor, seleccione la fecha inicial y la fecha final.
+</ngb-alert>
+
 <section id="report">
-    <h1>Historicos de consumos</h1>
-    <p>Pulsa sobre el informe que quieres ver. Recuerda, los botones solo se habilitan si seleccionas la fecha inicial y final.</p>
+  <h1>Historicos de consumos</h1>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <button ngbNavLink (click)="getHistoricConsumptionByTranches()">
+        Histórico Consumos por Tramos
+      </button>
+      <ng-template ngbNavContent>
+        <app-table [data]="tranchesData"></app-table>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <button ngbNavLink (click)="getHistoricConsumptionByClient()">Histórico Consumos por Cliente</button>
+      <ng-template ngbNavContent>
+        <app-table [data]="clientData"></app-table>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <button ngbNavLink (click)="getTop20()">Top 20 Peores Tramos/Cliente</button>
+      <ng-template ngbNavContent>
+        <app-table [data]="top20Data"></app-table>
+      </ng-template>
+    </li>
+  </ul>
 
-    <button
-      type="button"
-      class="btn btn-outline-primary"
-      (click)="toggleCollapse(1); getHistoricConsumptionByTranches()"
-      [attr.aria-expanded]="!isCollapsed[1]"
-      aria-controls="collapseExample1"
-      [disabled]="!fechaInicial || !fechaFinal"
-    >
-      Histórico Consumos por Tramos
-    </button>
-    <button
-      type="button"
-      class="btn btn-outline-primary ms-2"
-      (click)="toggleCollapse(2); getHistoricConsumptionByClient()"
-      [attr.aria-expanded]="!isCollapsed[2]"
-      aria-controls="collapseExample2"
-      [disabled]="!fechaInicial || !fechaFinal"
-    >
-      Histórico Consumos por Cliente
-    </button>
-    <button
-      type="button"
-      class="btn btn-outline-primary ms-2"
-      (click)="toggleCollapse(3); getTop20()"
-      [attr.aria-expanded]="!isCollapsed[3]"
-      aria-controls="collapseExample3"
-      [disabled]="!fechaInicial || !fechaFinal"
-    >
-      Top 20 Peores Tramos/Cliente
-    </button>
-  
-  
-    <div [ngbCollapse]="isCollapsed[1]">
-      <app-table [data]="tranchesData"></app-table>
-    </div>
-  
-    <div [ngbCollapse]="isCollapsed[2]">
-      <app-table [data]="clientData"></app-table>
-    </div>
-  
-    <div [ngbCollapse]="isCollapsed[3]">
-      <app-table [data]="top20Data"></app-table>
-    </div>
-  </section>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-  
+</section>
