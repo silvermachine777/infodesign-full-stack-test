@@ -20,6 +20,7 @@ export class TableComponent implements OnChanges {
 
   constructor(private decimalPipe: DecimalPipe, private config: NgbPaginationConfig) {
     config.boundaryLinks = true;
+    this.paginatedData = [];
   }
 
   ngOnChanges(changes: SimpleChanges) {
