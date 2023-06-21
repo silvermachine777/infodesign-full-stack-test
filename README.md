@@ -4,7 +4,7 @@ Welcome to FullStack test by Infodesign. This is a web aplication for  consumpti
 
 # Preview
 
-![preview of application](https://raw.githubusercontent.com/silvermachine777/infodesign-full-stack-test/main/src/assets/img/InfodesignFullStackTest.png)
+![preview of application](https://raw.githubusercontent.com/silvermachine777/infodesign-full-stack-test/main/src/assets/img/preview.png)
 
 ## Features
 
