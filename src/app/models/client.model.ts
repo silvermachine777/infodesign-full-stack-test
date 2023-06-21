@@ -1,7 +1,7 @@
 export interface Client{
-    client: string,
-    line: string,
-    consumption: number,
-    loss: number,
-    costForConsumption: number
+    Cliente: string,
+    Linea: string,
+    Consumo: number,
+    Perdida: number,
+    'Costo x Consumo': number
 }
