@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'infodesign-full-stack-test';
+
+  isLoading: boolean = true;
+
+  simulateDataLoading() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+  }
+
+  ngOnInit() {
+    this.simulateDataLoading();
+  }
 }
