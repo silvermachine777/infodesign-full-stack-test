@@ -12,6 +12,7 @@ import { ClientService } from './services/client.service';
 import { Top20Service } from './services/top20.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { CommonModule, DecimalPipe } from '@angular/common';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CommonModule, DecimalPipe } from '@angular/common';
     DatepickerComponent,
     TableComponent,
     ShowReportComponent,
-    LoaderComponent
+    LoaderComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
