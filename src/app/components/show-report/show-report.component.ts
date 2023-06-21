@@ -9,8 +9,6 @@ import { Client } from 'src/app/models/client.model';
 import { Top20 } from 'src/app/models/top20.model';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { LoaderComponent } from './../loader/loader.component';
-
 
 @Component({
   selector: 'app-show-report',
@@ -28,6 +26,7 @@ export class ShowReportComponent {
 
   showErrorMessage  = false;
   loading = false;
+  activeTab = 1;
 
   constructor(
     private tranchesService: TranchesService,
@@ -43,6 +42,8 @@ export class ShowReportComponent {
       }, 3000);
       return;
     }
+
+    this.activeTab = 1;
 
     const requestBody = {
       initialDate: this.formatDate(this.fechaInicial),
@@ -60,20 +61,18 @@ export class ShowReportComponent {
     .getTranches(requestBody, headers)
     .pipe(
       catchError((error) => {
-        console.log('Error al llamar a la API:', error);
         return of({ data: [] }); 
       })
     )
     .subscribe(
       (response) => {
         this.tranchesData = response.data;
-        this.data = this.tranchesData;
       },
       () => {
-        this.loading = false; // Desactivar el loader en caso de error
+        this.loading = false;
       },
       () => {
-        this.loading = false; // Desactivar el loader cuando la solicitud se complete
+        this.loading = false;
       }
     );
     this.showErrorMessage  = true;
@@ -87,6 +86,8 @@ export class ShowReportComponent {
       }, 3000);
       return;
     }
+
+    this.activeTab = 2;
 
     const requestBody = {
       initialDate: this.formatDate(this.fechaInicial),
@@ -104,13 +105,11 @@ export class ShowReportComponent {
     .getClients(requestBody, headers)
     .pipe(
       catchError((error) => {
-        console.log('Error al llamar a la API:', error);
         return of({ data: [] });
       })
     ).subscribe(
       (response) => {
         this.clientData = response.data;
-        this.data = this.clientData;
       },
       () => {
         this.loading = false;
@@ -131,6 +130,8 @@ export class ShowReportComponent {
       }, 3000);
       return;
     }
+
+    this.activeTab = 3;
     
     const requestBody = {
       initialDate: this.formatDate(this.fechaInicial),
@@ -147,13 +148,11 @@ export class ShowReportComponent {
     this.top20Service.getTop20(requestBody, headers)
     .pipe(
       catchError((error) => {
-        console.log('Error al llamar a la API:', error);
         return of({ data: [] });
       })
     ).subscribe(
       (response) => {
         this.top20Data = response.data;
-        this.data = this.top20Data;
       },
       () => {
         this.loading = false;

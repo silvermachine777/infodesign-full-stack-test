@@ -11,6 +11,10 @@
       <ng-template ngbNavContent>
         <app-loader *ngIf="loading"></app-loader>
         <app-table [data]="tranchesData"></app-table>
+        <app-chart
+          *ngIf="activeTab === 1 && tranchesData.length > 0"
+          [tranchesData]="tranchesData"
+        ></app-chart>
       </ng-template>
     </li>
     <li [ngbNavItem]="2">
@@ -18,6 +22,10 @@
       <ng-template ngbNavContent>
         <app-loader *ngIf="loading"></app-loader>
         <app-table [data]="clientData"></app-table>
+        <app-chart
+          *ngIf="activeTab === 2 && clientData.length > 0"
+          [clientData]="clientData"
+        ></app-chart>
       </ng-template>
     </li>
     <li [ngbNavItem]="3">
@@ -25,6 +33,10 @@
       <ng-template ngbNavContent>
         <app-loader *ngIf="loading"></app-loader>
         <app-table [data]="top20Data"></app-table>
+        <app-chart
+          *ngIf="activeTab === 3 && top20Data.length > 0"
+          [top20Data]="top20Data"
+        ></app-chart>
       </ng-template>
     </li>
   </ul>
