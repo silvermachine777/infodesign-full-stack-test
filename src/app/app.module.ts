@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranchesService } from './services/tranches.service';
 import { ClientService } from './services/client.service';
 import { Top20Service } from './services/top20.service';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DatepickerComponent,
     TableComponent,
-    ShowReportComponent
+    ShowReportComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
