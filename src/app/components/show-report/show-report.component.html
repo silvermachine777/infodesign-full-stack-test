@@ -10,18 +10,21 @@
         Histórico Consumos por Tramos
       </button>
       <ng-template ngbNavContent>
+        <app-loader *ngIf="loading"></app-loader>
         <app-table [data]="tranchesData"></app-table>
       </ng-template>
     </li>
     <li [ngbNavItem]="2">
       <button ngbNavLink (click)="getHistoricConsumptionByClient()">Histórico Consumos por Cliente</button>
       <ng-template ngbNavContent>
+        <app-loader *ngIf="loading"></app-loader>
         <app-table [data]="clientData"></app-table>
       </ng-template>
     </li>
     <li [ngbNavItem]="3">
       <button ngbNavLink (click)="getTop20()">Top 20 Peores Tramos/Cliente</button>
       <ng-template ngbNavContent>
+        <app-loader *ngIf="loading"></app-loader>
         <app-table [data]="top20Data"></app-table>
       </ng-template>
     </li>

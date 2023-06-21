@@ -9,6 +9,8 @@ import { Client } from 'src/app/models/client.model';
 import { Top20 } from 'src/app/models/top20.model';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { LoaderComponent } from './../loader/loader.component';
+
 
 @Component({
   selector: 'app-show-report',
@@ -25,6 +27,7 @@ export class ShowReportComponent {
   top20Data: Top20[] = [];
 
   showErrorMessage  = false;
+  loading = false;
 
   constructor(
     private tranchesService: TranchesService,
@@ -51,7 +54,10 @@ export class ShowReportComponent {
       'Content-Type': 'application/json',
     });
 
-    this.tranchesService.getTranches(requestBody, headers)
+    this.loading = true;
+
+    this.tranchesService
+    .getTranches(requestBody, headers)
     .pipe(
       catchError((error) => {
         console.log('Error al llamar a la API:', error);
@@ -62,6 +68,12 @@ export class ShowReportComponent {
       (response) => {
         this.tranchesData = response.data;
         this.data = this.tranchesData;
+      },
+      () => {
+        this.loading = false; // Desactivar el loader en caso de error
+      },
+      () => {
+        this.loading = false; // Desactivar el loader cuando la solicitud se complete
       }
     );
     this.showErrorMessage  = true;
@@ -86,17 +98,25 @@ export class ShowReportComponent {
       'Content-Type': 'application/json',
     });
 
-    this.clientService.getClients(requestBody, headers)
+    this.loading = true;
+
+    this.clientService
+    .getClients(requestBody, headers)
     .pipe(
       catchError((error) => {
         console.log('Error al llamar a la API:', error);
         return of({ data: [] });
       })
-    )
-    .subscribe(
+    ).subscribe(
       (response) => {
         this.clientData = response.data;
         this.data = this.clientData;
+      },
+      () => {
+        this.loading = false;
+      },
+      () => {
+        this.loading = false;
       }
     );
 
@@ -122,19 +142,27 @@ export class ShowReportComponent {
       'Content-Type': 'application/json',
     });
 
+    this.loading = true;
+
     this.top20Service.getTop20(requestBody, headers)
     .pipe(
       catchError((error) => {
         console.log('Error al llamar a la API:', error);
         return of({ data: [] });
       })
-    )
-    .subscribe(
+    ).subscribe(
       (response) => {
         this.top20Data = response.data;
         this.data = this.top20Data;
+      },
+      () => {
+        this.loading = false;
+      },
+      () => {
+        this.loading = false;
       }
     );
+
     this.showErrorMessage  = true;
   }
 
