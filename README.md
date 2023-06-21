@@ -11,6 +11,8 @@ Welcome to FullStack test by Infodesign. This is a web aplication for  consumpti
 - Datepicker component
 - Show repor component
 - Table component
+- Chart component
+- Loader component
 - Client, top20 and tranches services for the http requests
 - Models
 - Environments
@@ -27,6 +29,7 @@ Welcome to FullStack test by Infodesign. This is a web aplication for  consumpti
 
 - [Bootstrap](https://ng-bootstrap.github.io/#/home)
 - Bootstrap icons
+- D3
 
 ## Project and development server
 
