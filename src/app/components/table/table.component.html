@@ -5,9 +5,18 @@
 	  </tr>
 	</thead>
 	<tbody>
-	  <tr scope="row" *ngFor="let item of data; index as i">
+	  <tr scope="row" *ngFor="let item of paginatedData; index as i">
 		<td *ngFor="let column of getColumns()">{{ getPropertyValue(item, column) }}</td>
 	  </tr>
 	</tbody>
   </table>
+  
+  <div class="d-flex justify-content-between p-2">
+	<ngb-pagination 
+	  [collectionSize]="collectionSize" 
+	  [(page)]="page" 
+	  [pageSize]="pageSize"
+	  (pageChange)="onPageChange($event)">
+	</ngb-pagination>
+  </div>
   
