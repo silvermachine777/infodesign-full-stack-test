@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { NgbDateStruct, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDateStruct,
+  NgbDateParserFormatter,
+  NgbDate,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-datepicker',
@@ -13,18 +17,51 @@ export class DatepickerComponent {
   fechaInicial!: NgbDateStruct;
   fechaFinal!: NgbDateStruct;
 
+  errorFecha: string | null = null;
+
   constructor(private ngbDateParserFormatter: NgbDateParserFormatter) {}
+
+  validateDateSelection(): boolean {
+    if (this.fechaInicial && this.fechaFinal) {
+      const fechaInicial = NgbDate.from(this.fechaInicial);
+      const fechaFinal = NgbDate.from(this.fechaFinal);
+      if (fechaInicial && fechaFinal) {
+        return (
+          fechaInicial.before(fechaFinal) || fechaInicial.equals(fechaFinal)
+        );
+      }
+    }
+    return true;
+  }
+
+  validateAndSetError() {
+    if (!this.validateDateSelection()) {
+      this.errorFecha =
+        'La fecha de inicio no puede ser superior a la fecha final, selecciona una fecha inicial correcta.';
+
+      setTimeout(() => {
+        this.errorFecha = null;
+      }, 3000);
+    } else {
+      this.errorFecha = null;
+    }
+  }
 
   onDateSelect(date: NgbDateStruct, inputId: string) {
     if (inputId === 'dpInicial') {
       this.modelInicial = date;
-      this.fechaInicial = this.ngbDateParserFormatter.parse(this.ngbDateParserFormatter.format(date))!;
+      this.fechaInicial = this.ngbDateParserFormatter.parse(
+        this.ngbDateParserFormatter.format(date)
+      )!;
     } else if (inputId === 'dpFinal') {
       this.modelFinal = date;
-      this.fechaFinal = this.ngbDateParserFormatter.parse(this.ngbDateParserFormatter.format(date))!;
+      this.fechaFinal = this.ngbDateParserFormatter.parse(
+        this.ngbDateParserFormatter.format(date)
+      )!;
     }
+
+    this.validateAndSetError();
   }
-  
 
   onInputChange(event: Event, inputId: string) {
     const inputValue = (event.target as HTMLInputElement).value;
@@ -37,8 +74,8 @@ export class DatepickerComponent {
         this.modelFinal = parsedDate;
         this.fechaFinal = parsedDate;
       }
+
+      this.validateAndSetError();
     }
-  } 
-  
-  
+  }
 }

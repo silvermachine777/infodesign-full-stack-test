@@ -43,5 +43,8 @@
     </div>
   </div>
 </div>
+<ngb-alert *ngIf="errorFecha" type="danger" class="error-message">
+  {{ errorFecha }}
+</ngb-alert>
 
 <app-show-report [fechaInicial]="fechaInicial" [fechaFinal]="fechaFinal"></app-show-report>
