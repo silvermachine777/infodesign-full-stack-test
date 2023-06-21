@@ -11,6 +11,7 @@ import { TranchesService } from './services/tranches.service';
 import { ClientService } from './services/client.service';
 import { Top20Service } from './services/top20.service';
 import { LoaderComponent } from './components/loader/loader.component';
+import { CommonModule, DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { LoaderComponent } from './components/loader/loader.component';
     BrowserModule,
     FormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
-  providers: [TranchesService, ClientService, Top20Service],
+  providers: [TranchesService, ClientService, Top20Service, DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
