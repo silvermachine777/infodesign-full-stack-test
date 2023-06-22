@@ -19,9 +19,8 @@ export class TableComponent implements OnChanges {
   paginatedData: (Tranches | Client | Top20)[] = [];
 
   constructor(private decimalPipe: DecimalPipe, private config: NgbPaginationConfig) {
-    config.boundaryLinks = true;
     this.paginatedData = [];
-  }
+  }  
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && !changes['data'].firstChange) {
@@ -49,8 +48,10 @@ export class TableComponent implements OnChanges {
     if (this.data) {
       const startIndex = (this.page - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
+  
       this.collectionSize = this.data.length;
       this.paginatedData = this.data.slice(startIndex, endIndex);
     }
-  }  
+  }
+  
 }

@@ -13,11 +13,15 @@
 
 <div class="d-flex justify-content-between p-2">
 	<div *ngIf="paginatedData.length > 0">
-		<ngb-pagination 
+	  <ngb-pagination 
 		[collectionSize]="collectionSize" 
 		[(page)]="page" 
 		[pageSize]="pageSize"
-		(pageChange)="onPageChange($event)">
-		</ngb-pagination>
+		(pageChange)="onPageChange($event)"
+		[maxSize]="5"
+		[boundaryLinks]="false"
+		[rotate]="false"
+	  ></ngb-pagination>
 	</div>
-</div>
+  </div>
+  
